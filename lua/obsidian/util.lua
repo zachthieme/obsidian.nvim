@@ -531,7 +531,7 @@ util.toggle_checkbox = function(opts, line_num)
         -- if config.todo_comments then
         if checkboxes[i + 1] == "x" or checkboxes[i + 1] == "c" then
           if not line:find "<!-- completed:" then
-            line = line .. " <!-- completed: " .. os.date "%Y-%m-%d" .. " -->"
+            line = line .. " <!-- completed:" .. os.date "%Y-%m-%d" .. " -->"
           end
         else
           line = line:gsub("%s*<!-- completed:.- -->", "")
