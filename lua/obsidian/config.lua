@@ -62,6 +62,7 @@ config.ClientOpts.default = function()
     sort_reversed = true,
     search_max_lines = 1000,
     open_notes_in = "current",
+    use_metadata_comments = true,
     ui = config.UIOpts.default(),
     attachments = config.AttachmentsOpts.default(),
     callbacks = config.CallbackConfig.default(),

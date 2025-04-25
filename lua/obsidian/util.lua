@@ -526,6 +526,17 @@ util.toggle_checkbox = function(opts, line_num)
           i = 0
         end
         line = util.string_replace(line, "- [" .. check_char .. "]", "- [" .. checkboxes[i + 1] .. "]", 1)
+        -- Add or remove metadata
+        local config = require("obsidian").config.client
+        if config.use_metadata_comments then
+          if checkboxes[i + 1] == "x" or checkboxes[i + 1] == "c" then
+            if not line:find "<!-- completed:" then
+              line = line .. " <!-- completed: " .. os.date "%Y-%m-%d" .. " -->"
+            end
+          else
+            line = line:gsub("%s*<!-- completed:.- -->", "")
+          end
+        end
         break
       end
     end
