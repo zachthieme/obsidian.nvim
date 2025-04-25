@@ -527,7 +527,7 @@ util.toggle_checkbox = function(opts, line_num)
         end
         line = util.string_replace(line, "- [" .. check_char .. "]", "- [" .. checkboxes[i + 1] .. "]", 1)
         -- Add or remove metadata
-        local config = require("obsidian").config.client
+        local config = require("obsidian.config").get()
         if config.todo_comments then
           if checkboxes[i + 1] == "x" or checkboxes[i + 1] == "c" then
             if not line:find "<!-- completed:" then
