@@ -29,6 +29,7 @@ local config = {}
 ---@field sort_reversed boolean|?
 ---@field search_max_lines integer
 ---@field open_notes_in obsidian.config.OpenStrategy
+---@field todo_comments boolean|?
 ---@field ui obsidian.config.UIOpts | table<string, any>
 ---@field attachments obsidian.config.AttachmentsOpts
 ---@field callbacks obsidian.config.CallbackConfig
@@ -62,7 +63,7 @@ config.ClientOpts.default = function()
     sort_reversed = true,
     search_max_lines = 1000,
     open_notes_in = "current",
-    use_metadata_comments = true,
+    todo_comments = true,
     ui = config.UIOpts.default(),
     attachments = config.AttachmentsOpts.default(),
     callbacks = config.CallbackConfig.default(),
