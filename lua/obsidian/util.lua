@@ -529,13 +529,11 @@ util.toggle_checkbox = function(opts, line_num)
         -- Add or remove metadata
         -- local config = require("obsidian.config").get()
         -- if config.todo_comments then
+        line = line:gsub("%s*<!-- completed:.- -->", "")
         if checkboxes[i + 1] == "x" or checkboxes[i + 1] == "c" then
-          -- stylua: ignore
           if not string.find(line, "<!-- completed:") then
             line = line .. " <!-- completed:" .. os.date "%Y-%m-%d" .. " -->"
           end
-        else
-          line = line:gsub("%s*<!-- completed:.- -->", "")
         end
         -- end
         break
