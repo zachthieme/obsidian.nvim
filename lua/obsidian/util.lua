@@ -512,6 +512,7 @@ util.toggle_checkbox = function(opts, line_num)
   local checkbox_pattern = "^%s*- %[.] "
   local checkboxes = opts or { " ", "x" }
 
+  line = line:gsub("%s*<!-- completed:.- -->", "")
   if not string.match(line, checkbox_pattern) then
     local unordered_list_pattern = "^(%s*)[-*+] (.*)"
     if string.match(line, unordered_list_pattern) then
@@ -529,7 +530,6 @@ util.toggle_checkbox = function(opts, line_num)
         -- Add or remove metadata
         -- local config = require("obsidian.config").get()
         -- if config.todo_comments then
-        line = line:gsub("%s*<!-- completed:.- -->", "")
         if checkboxes[i + 1] == "x" or checkboxes[i + 1] == "c" then
           if not string.find(line, "<!-- completed:") then
             line = line .. " <!-- completed:" .. os.date "%Y-%m-%d" .. " -->"
