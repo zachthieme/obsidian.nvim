@@ -531,7 +531,7 @@ util.toggle_checkbox = function(opts, line_num)
         -- if config.todo_comments then
         if checkboxes[i + 1] == "x" or checkboxes[i + 1] == "c" then
           -- stylua: ignore
-            if not line:find("<!-- completed:") then
+          if not string.find(line, "<!-- completed:") then
             line = line .. " <!-- completed:" .. os.date "%Y-%m-%d" .. " -->"
           end
         else
