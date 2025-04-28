@@ -520,7 +520,6 @@ util.toggle_checkbox = function(opts, line_num)
       line = string.gsub(line, "^(%s*)", "%1- [ ] ")
     end
   else
-    line = line:gsub("%s*<!-- completed:.- -->", "")
     for i, check_char in enumerate(checkboxes) do
       if string.match(line, "^%s*- %[" .. util.escape_magic_characters(check_char) .. "%].*") then
         if i == #checkboxes then
@@ -534,6 +533,8 @@ util.toggle_checkbox = function(opts, line_num)
           if not string.find(line, "<!-- completed:", 1, true) then
             line = line .. " <!-- completed:" .. os.date "%Y-%m-%d" .. " -->"
           end
+        else
+          line = line:gsub("%s*<!-- completed:.- -->", "")
         end
         -- end
         break
