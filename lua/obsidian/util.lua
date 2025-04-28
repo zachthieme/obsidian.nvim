@@ -535,7 +535,7 @@ util.toggle_checkbox = function(opts, line_num)
           end
         else
           print("Before gsub:", line)
-          line = (line:gsub("%s*<!--%s*completed:%s*.-%s*-->", ""))
+          line = (line:gsub("%s*<!--%s*completed:%s*[^>]-%s*-->", ""))
           print("After gsub:", line)
         end
         -- end
