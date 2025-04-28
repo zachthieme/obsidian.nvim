@@ -513,7 +513,6 @@ util.toggle_checkbox = function(opts, line_num)
   local checkboxes = opts or { " ", "x" }
 
   if not string.match(line, checkbox_pattern) then
-    line = line:gsub("%s*<!-- completed:.- -->", "")
     local unordered_list_pattern = "^(%s*)[-*+] (.*)"
     if string.match(line, unordered_list_pattern) then
       line = string.gsub(line, unordered_list_pattern, "%1- [ ] %2")
@@ -521,6 +520,7 @@ util.toggle_checkbox = function(opts, line_num)
       line = string.gsub(line, "^(%s*)", "%1- [ ] ")
     end
   else
+    line = line:gsub("%s*<!-- completed:.- -->", "")
     for i, check_char in enumerate(checkboxes) do
       if string.match(line, "^%s*- %[" .. util.escape_magic_characters(check_char) .. "%].*") then
         if i == #checkboxes then
