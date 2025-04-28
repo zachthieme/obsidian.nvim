@@ -531,7 +531,7 @@ util.toggle_checkbox = function(opts, line_num)
         -- local config = require("obsidian.config").get()
         -- if config.todo_comments then
         if checkboxes[i + 1] == "x" or checkboxes[i + 1] == "c" then
-          if not string.find(line, "<!-- completed:") then
+          if not string.find(line, "<!-- completed:", 1, true) then
             line = line .. " <!-- completed:" .. os.date "%Y-%m-%d" .. " -->"
           end
         end
