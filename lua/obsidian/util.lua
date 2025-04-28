@@ -534,7 +534,9 @@ util.toggle_checkbox = function(opts, line_num)
             line = line .. " <!-- completed:" .. os.date "%Y-%m-%d" .. " -->"
           end
         else
-          line = (line:gsub("%s*<!--%s*completed:.-%s*-->", ""))
+          print("Before gsub:", line)
+          line = (line:gsub("%s*<!--%s*completed:%s*.-%s*-->", ""))
+          print("After gsub:", line)
         end
         -- end
         break
